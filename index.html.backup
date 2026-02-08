@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>William Lawal — Frontend Web Developer &amp; Web Designer</title>
+  <meta name="description" content="Portfolio of William Lawal — Frontend Web Developer &amp; Web Designer based in Abuja, Nigeria. Focused on accessible, semantic web interfaces and product-focused designs." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="animations.css" />
+</head>
+<body>
+  <!-- Header: site branding and primary navigation -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="site-branding">
+        <a class="site-logo" href="#hero" aria-label="William Lawal — Go to top">
+          <span class="name-text">William Lawal</span>
+          <span class="name-role">Frontend Web Developer &amp; Web Designer</span>
+        </a>
+      </div>
+
+      <nav class="main-nav" role="navigation" aria-label="Primary">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-header" href="#contact">Hire Me</a>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" role="main">
+    <!-- Hero: introduction, role, short tagline, primary CTAs, and visual image -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <h1 id="hero-heading" class="hero-title">William Lawal</h1>
+          <p class="hero-subtitle">Frontend Web Developer &amp; Web Designer — Abuja, Nigeria</p>
+          <p class="hero-tagline">I build accessible, responsive interfaces and polished landing experiences focused on usability and performance.</p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <figure class="hero-visual" aria-label="Hero visual image">
+          <div class="hero-image-wrapper">
+            <img src="My image.png" alt="William Lawal — Frontend Developer" class="hero-image" />
+            <div class="hero-image-overlay" aria-hidden="true"></div>
+            <div class="hero-image-grain" aria-hidden="true"></div>
+            <div class="hero-image-vignette" aria-hidden="true"></div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- About: concise professional summary and focus areas -->
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="about-inner">
+        <h2 id="about-heading" class="section-title">About</h2>
+        <p class="about-summary">
+          I am a freelance frontend developer with over a year of experience delivering client-facing websites and landing pages. My work emphasizes semantic HTML, accessibility, and pragmatic, maintainable code. I enjoy collaborating on product-focused designs and turning design concepts into reliable user experiences.
+        </p>
+
+        <ul class="about-meta">
+          <li class="meta-item"><strong>Location:</strong> Abuja, Nigeria</li>
+          <li class="meta-item"><strong>Email:</strong> <a href="mailto:williamlawal88@gmail.com">williamlawal88@gmail.com</a></li>
+          <li class="meta-item"><strong>Availability:</strong> Freelance / contract engagements</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Skills: languages, frameworks, and tools -->
+    <section id="skills" class="skills" aria-labelledby="skills-heading">
+      <div class="skills-inner">
+        <h2 id="skills-heading" class="section-title">Skills</h2>
+
+        <div class="skills-grid">
+          <div class="skills-group languages">
+            <h3 class="skills-group-title">Languages &amp; Technologies</h3>
+            <ul class="skills-list">
+              <li class="skill">HTML</li>
+              <li class="skill">CSS</li>
+              <li class="skill">JavaScript</li>
+              <li class="skill">React (fundamentals)</li>
+              <li class="skill">C</li>
+            </ul>
+          </div>
+
+          <div class="skills-group tools">
+            <h3 class="skills-group-title">Tools &amp; Platforms</h3>
+            <ul class="skills-list">
+              <li class="skill">Git / GitHub</li>
+              <li class="skill">Framer (prototype &amp; visual design)</li>
+              <li class="skill">Visual Studio Code</li>
+              <li class="skill">Browser dev tools</li>
+            </ul>
+          </div>
+
+          <div class="skills-group practices">
+            <h3 class="skills-group-title">Practices</h3>
+            <ul class="skills-list">
+              <li class="skill">Semantic HTML &amp; accessibility (a11y)</li>
+              <li class="skill">Responsive layout and mobile-first design</li>
+              <li class="skill">Cross-browser testing and debugging</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects: project cards with title, description, tech list, and placeholder links -->
+    <section id="projects" class="projects" aria-labelledby="projects-heading">
+      <div class="projects-inner">
+        <h2 id="projects-heading" class="section-title">Selected Projects</h2>
+
+        <div class="projects-grid">
+          <article class="project-card" aria-labelledby="project-one-title">
+            <header class="project-card-header">
+              <h3 id="project-one-title" class="project-title">Mini E-commerce / Event Website</h3>
+            </header>
+            <p class="project-description">
+              A compact e-commerce and event landing site built to demonstrate product listings, simple cart interactions, and event booking flows. Focused on clear information architecture and accessible forms.
+            </p>
+            <ul class="project-tech">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="project-links">
+              <a class="project-link" href="#" aria-label="Live demo of Mini E-commerce / Event Website">Live Demo</a>
+              <a class="project-link" href="https://github.com/TheBoyBilly" aria-label="Source code on GitHub for Mini E-commerce / Event Website">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card" aria-labelledby="project-two-title">
+            <header class="project-card-header">
+              <h3 id="project-two-title" class="project-title">Netflix Landing Page Clone</h3>
+            </header>
+            <p class="project-description">
+              A pixel-faithful landing page clone focusing on layout composition, responsive hero and media sections, and typographic rhythm suitable for a streaming-service landing experience.
+            </p>
+            <ul class="project-tech">
+              <li>HTML</li>
+              <li>CSS</li>
+            </ul>
+            <div class="project-links">
+              <a class="project-link" href="#" aria-label="Live demo of Netflix Landing Page Clone">Live Demo</a>
+              <a class="project-link" href="https://github.com/TheBoyBilly" aria-label="Source code on GitHub for Netflix Landing Page Clone">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card" aria-labelledby="project-three-title">
+            <header class="project-card-header">
+              <h3 id="project-three-title" class="project-title">Fictional Portfolio Built with Framer</h3>
+            </header>
+            <p class="project-description">
+              A polished, interactive portfolio prototype created in Framer to explore motion, layout, and UI polish. Served as a design-to-development handoff reference for layout implementation.
+            </p>
+            <ul class="project-tech">
+              <li>Framer</li>
+              <li>HTML (prototype export)</li>
+            </ul>
+            <div class="project-links">
+              <a class="project-link" href="#" aria-label="Live demo of Framer Portfolio">Live Demo</a>
+              <a class="project-link" href="https://github.com/TheBoyBilly" aria-label="Source code on GitHub for Framer Portfolio">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience: freelance role with responsibilities and achievements -->
+    <section id="experience" class="experience" aria-labelledby="experience-heading">
+      <div class="experience-inner">
+        <h2 id="experience-heading" class="section-title">Experience</h2>
+
+        <article class="experience-item" aria-labelledby="exp-freelance-title">
+          <h3 id="exp-freelance-title" class="experience-role">Freelance Frontend Developer</h3>
+          <p class="experience-meta">Remote — <time datetime="2023">2023</time> &mdash; Present</p>
+          <div class="experience-details">
+            <p>
+              Deliver front-end implementations and landing pages for small businesses and individual clients. Work spans component-based UI, responsive layouts, accessible forms, and collaboration with designers to translate mocks into production-ready markup.
+            </p>
+            <ul class="experience-responsibilities">
+              <li>Converted designs into semantic, accessible HTML templates.</li>
+              <li>Implemented responsive layouts and cross-device testing.</li>
+              <li>Collaborated with designers on interaction and handoff details.</li>
+              <li>Maintained lightweight build and deployment workflows for demos.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Education: current degree and relevant coursework or focus -->
+    <section id="education" class="education" aria-labelledby="education-heading">
+      <div class="education-inner">
+        <h2 id="education-heading" class="section-title">Education</h2>
+
+        <div class="education-item">
+          <h3 class="education-degree">Bachelor's Degree in Computer Science (In Progress)</h3>
+          <p class="education-institution">Ongoing studies — coursework includes algorithms, data structures, and systems with practical projects in software development.</p>
+          <p class="education-notes">Complementary self-study in frontend development, UI design, and web accessibility.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact: contact details and structured contact form for inquiries -->
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="contact-inner">
+        <h2 id="contact-heading" class="section-title">Contact</h2>
+
+        <div class="contact-info">
+          <p class="contact-item"><strong>Email:</strong> <a href="mailto:williamlawal88@gmail.com">williamlawal88@gmail.com</a></p>
+          <p class="contact-item"><strong>GitHub:</strong> <a href="https://github.com/TheBoyBilly">github.com/TheBoyBilly</a></p>
+          <p class="contact-item"><strong>Location:</strong> Abuja, Nigeria</p>
+        </div>
+
+        <form class="contact-form" id="contact-form" name="contact" method="post" aria-label="Contact form for inquiries">
+          <div class="form-row">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Your name" required />
+          </div>
+
+          <div class="form-row">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-row">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="6" placeholder="Brief message or project details" required></textarea>
+          </div>
+
+          <div class="form-row form-actions">
+            <button type="submit" class="btn btn-submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer: copyright and brief identity -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">© <time datetime="2026">2026</time> William Lawal. All rights reserved.</p>
+      <p class="footer-credit">William Lawal — Frontend Web Developer &amp; Web Designer</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

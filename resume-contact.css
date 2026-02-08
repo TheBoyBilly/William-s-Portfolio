@@ -1,0 +1,476 @@
+/* ============================================================================
+   RESUME SECTION
+   ============================================================================ */
+
+.resume {
+  background: var(--color-black);
+  animation: revealIn 600ms ease-out 200ms backwards;
+}
+
+.resume-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.resume-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: start;
+  margin-top: var(--spacing-2xl);
+}
+
+.resume-text {
+  animation: revealInLeft 600ms ease-out 300ms backwards;
+}
+
+.resume-intro {
+  font-size: var(--size-lg);
+  color: var(--color-grey-200);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.resume-highlights {
+  padding: var(--spacing-2xl);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-base);
+}
+
+.resume-highlights:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-4px);
+}
+
+.resume-section-title {
+  font-size: var(--size-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-lg);
+}
+
+.resume-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.resume-list li {
+  position: relative;
+  padding-left: var(--spacing-lg);
+  color: var(--color-grey-300);
+  font-size: var(--size-sm);
+  line-height: 1.6;
+  transition: all var(--transition-base);
+}
+
+.resume-list li::before {
+  content: "▪";
+  position: absolute;
+  left: 0;
+  color: var(--color-grey-500);
+  font-size: var(--size-xs);
+  transition: all var(--transition-base);
+}
+
+.resume-highlights:hover .resume-list li {
+  padding-left: calc(var(--spacing-lg) + 4px);
+  color: var(--color-white);
+}
+
+.resume-highlights:hover .resume-list li::before {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Resume Actions */
+.resume-actions {
+  animation: revealInRight 600ms ease-out 400ms backwards;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.btn-resume {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-base);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--glow-sm);
+}
+
+.btn-resume::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left var(--transition-base);
+}
+
+.btn-resume:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--glow-md);
+  transform: translateY(-3px);
+}
+
+.btn-resume:hover::before {
+  left: 100%;
+}
+
+.btn-icon {
+  font-size: var(--size-lg);
+  font-weight: var(--weight-bold);
+  display: inline-block;
+  transition: transform var(--transition-fast) ease, opacity var(--transition-fast) ease;
+  animation: iconFloat 2.8s ease-in-out infinite;
+}
+
+.btn-resume:hover .btn-icon {
+  transform: translateY(-4px);
+}
+
+.btn-text {
+  font-weight: var(--weight-semibold);
+}
+
+.resume-note {
+  font-size: var(--size-xs);
+  color: var(--color-grey-400);
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Form status messages (success / error) */
+.form-status {
+  margin-top: var(--spacing-md);
+  font-size: var(--size-sm);
+  line-height: 1.4;
+}
+
+.form-status.success {
+  color: #b7f0c6; /* soft green on dark bg */
+}
+
+.form-status.error {
+  color: #ffb3b3; /* soft red for errors */
+}
+
+/* ============================================================================
+   CONTACT SECTION (REDESIGNED)
+   ============================================================================ */
+
+.contact {
+  background: var(--color-black);
+  animation: revealIn 600ms ease-out 300ms backwards;
+}
+
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--spacing-4xl);
+  align-items: start;
+  margin-top: var(--spacing-2xl);
+}
+
+/* Quick Connect Section (Left) */
+.contact-quick {
+  animation: revealInLeft 600ms ease-out 400ms backwards;
+}
+
+.contact-description {
+  font-size: var(--size-base);
+  color: var(--color-grey-300);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.quick-connect {
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-2xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quick-connect-title {
+  font-size: var(--size-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--size-sm);
+}
+
+.quick-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.quick-link-item {
+  transition: all var(--transition-base);
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-md);
+  color: var(--color-grey-300);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-sm);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent);
+  transition: height var(--transition-base);
+}
+
+.quick-link:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  transform: translateX(6px);
+}
+
+.quick-link:hover::before {
+  height: 100%;
+}
+
+.quick-link-label {
+  font-weight: var(--weight-semibold);
+}
+
+.quick-link-icon {
+  opacity: 0.6;
+  transform: translateX(0);
+  transition: all var(--transition-base);
+}
+
+.quick-link:hover .quick-link-icon {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.contact-availability {
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-md);
+}
+
+.availability-label {
+  color: var(--color-white);
+  font-size: var(--size-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.availability-text {
+  color: var(--color-grey-300);
+  font-size: var(--size-sm);
+  margin: 0;
+}
+
+/* Contact Form (Right) */
+.contact-form {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  padding: var(--spacing-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-base);
+  animation: revealInRight 600ms ease-out 500ms backwards;
+}
+
+.contact-form:focus-within {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--glow-sm);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.form-group.focused label {
+  color: var(--color-white);
+  font-weight: var(--weight-bold);
+}
+
+.form-group.filled label {
+  color: var(--color-white);
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-sm);
+  text-transform: capitalize;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: var(--size-sm);
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-grey-500);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-2xl);
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-base);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border-radius: var(--border-radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left var(--transition-base);
+}
+
+.btn-submit:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 100%);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--glow-md);
+  transform: translateY(-2px);
+}
+
+.btn-submit:hover::before {
+  left: 100%;
+}
+
+.btn-submit:focus {
+  outline: none;
+  box-shadow: var(--glow-lg);
+}
+
+.form-note {
+  font-size: var(--size-xs);
+  color: var(--color-grey-400);
+  text-align: center;
+  margin: 0;
+}
+
+/* ============================================================================
+   RESPONSIVE CONTACT LAYOUT
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .resume-content {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .resume-actions {
+    width: 100%;
+  }
+
+  .btn-resume {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: var(--spacing-lg);
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .quick-link {
+    padding: var(--spacing-md);
+  }
+
+  .resume-content {
+    gap: var(--spacing-2xl);
+  }
+}

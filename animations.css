@@ -1,0 +1,621 @@
+/* ============================================================================
+   ANIMATIONS & MICRO-INTERACTIONS
+   Advanced scroll-triggered animations, hover effects, and transitions
+   ============================================================================ */
+
+/* ============================================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================================ */
+
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInStaggered {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   GRADIENT ANIMATIONS
+   ============================================================================ */
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  }
+}
+
+@keyframes glowBreathe {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0), 0 0 20px rgba(255, 255, 255, 0);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Grain Texture Animation */
+@keyframes grain-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+/* Parallax Scroll Animation */
+@keyframes parallaxShift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30px);
+  }
+}
+
+/* Bounce Animation for buttons and icons */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  75% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Subtle float for small icons (continuous, low-amplitude) */
+@keyframes iconFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* ============================================================================
+   BUTTON ANIMATIONS
+   ============================================================================ */
+
+@keyframes buttonHoverGlow {
+  0% {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ============================================================================
+   NAVIGATION HOVER EFFECTS
+   ============================================================================ */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
+  transition: width 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+/* ============================================================================
+   PROJECT CARD HOVER MICRO-INTERACTIONS
+   ============================================================================ */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 500ms ease-in-out;
+  pointer-events: none;
+}
+
+.project-card:hover::after {
+  left: 100%;
+}
+
+.project-card .project-tech li {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card .project-tech li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 400ms ease;
+}
+
+.project-card:hover .project-tech li::before {
+  left: 100%;
+}
+
+/* Staggered animation for tech tags on hover */
+.project-card:hover .project-tech li:nth-child(1) {
+  animation: revealIn 300ms ease-out;
+}
+
+.project-card:hover .project-tech li:nth-child(2) {
+  animation: revealIn 300ms ease-out 50ms backwards;
+}
+
+.project-card:hover .project-tech li:nth-child(3) {
+  animation: revealIn 300ms ease-out 100ms backwards;
+}
+
+.project-card:hover .project-tech li:nth-child(4) {
+  animation: revealIn 300ms ease-out 150ms backwards;
+}
+
+/* ============================================================================
+   SKILL ITEM HOVER ANIMATIONS
+   ============================================================================ */
+
+.skill {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 500ms ease-in-out;
+  pointer-events: none;
+}
+
+.skills-group:hover .skill::after {
+  left: 100%;
+}
+
+/* ============================================================================
+   FORM FIELD ANIMATIONS
+   ============================================================================ */
+
+.form-row input:focus,
+.form-row textarea:focus {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.form-row input::selection,
+.form-row textarea::selection {
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
+}
+
+/* ============================================================================
+   EXPERIENCE ITEM HOVER ANIMATIONS
+   ============================================================================ */
+
+.experience-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-item::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.experience-item:hover::before {
+  opacity: 1;
+}
+
+.experience-responsibilities li {
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.experience-item:hover .experience-responsibilities li {
+  padding-left: var(--spacing-lg) + 4px;
+}
+
+.experience-responsibilities li::before {
+  transition: all var(--transition-base);
+}
+
+.experience-item:hover .experience-responsibilities li::before {
+  color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+}
+
+/* ============================================================================
+   HEADER SCROLL EFFECTS
+   ============================================================================ */
+
+.site-header {
+  animation: slideDownIn 400ms ease-out;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================================
+   STAGGERED LIST ANIMATIONS
+   ============================================================================ */
+
+.about-meta li {
+  animation: revealIn 500ms ease-out backwards;
+}
+
+.about-meta li:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.about-meta li:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.about-meta li:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+/* ============================================================================
+   SECTION ENTRANCE ANIMATIONS
+   ============================================================================ */
+
+.about,
+.skills,
+.projects,
+.experience,
+.education,
+.contact {
+  animation: revealIn 600ms ease-out backwards;
+}
+
+.about {
+  animation-delay: 0ms;
+}
+
+.skills {
+  animation-delay: 100ms;
+}
+
+.projects {
+  animation-delay: 200ms;
+}
+
+.experience {
+  animation-delay: 300ms;
+}
+
+.education {
+  animation-delay: 400ms;
+}
+
+.contact {
+  animation-delay: 500ms;
+}
+
+/* ============================================================================
+   PROJECT CARD STAGGERED GRID ANIMATIONS
+   ============================================================================ */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--spacing-2xl);
+}
+
+.project-card {
+  animation: scaleIn 600ms ease-out backwards;
+}
+
+.project-card:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.project-card:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.project-card:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+/* ============================================================================
+   SKILLS GROUP ANIMATIONS
+   ============================================================================ */
+
+.skills-group {
+  animation: revealInLeft 500ms ease-out backwards;
+}
+
+.skills-group:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.skills-group:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.skills-group:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+/* ============================================================================
+   CHECKBOX & FOCUS ANIMATIONS
+   ============================================================================ */
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   TEXT GRADIENT & GLOW EFFECTS
+   ============================================================================ */
+
+.hero-title {
+  background: linear-gradient(135deg, #ffffff 0%, #d1d1d1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================================
+   LOADING & TRANSITION STATES
+   ============================================================================ */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================================
+   SMOOTH LINK TRANSITIONS
+   ============================================================================ */
+
+a {
+  position: relative;
+  transition: color var(--transition-base);
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--transition-base);
+}
+
+.meta-item a:hover::after,
+.contact-item a:hover::after {
+  width: 100%;
+}
+
+/* ============================================================================
+   BACKDROP EFFECTS
+   ============================================================================ */
+
+.site-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.contact-form {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ============================================================================
+   DARK MODE & CONTRAST ENHANCEMENTS
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000000;
+    color: #f7f7f7;
+  }
+}
+
+/* ============================================================================
+   ENHANCE ANIMATIONS FOR FASTER CONNECTIONS
+   ============================================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Smooth scrolling for navigation anchors */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced button hover animations */
+  .btn:hover {
+    animation: glowPulse 1s ease-in-out infinite;
+  }
+
+  /* Project card hover glow */
+  .project-card:hover {
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+}
+
+/* ============================================================================
+   KEYBOARD NAVIGATION HIGHLIGHTS
+   ============================================================================ */
+
+.nav-link:focus-visible,
+.btn:focus-visible,
+.project-link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 3px;
+}
+
+/* ============================================================================
+   TAB FOCUS STATES
+   ============================================================================ */
+
+*:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   HOVER STATES FOR TOUCH DEVICES
+   ============================================================================ */
+
+@media (hover: none) {
+  .btn:hover {
+    animation: none;
+  }
+
+  .project-card:hover {
+    animation: none;
+  }
+}
+
+/* ============================================================================
+   PRINT ANIMATIONS (Disable)
+   ============================================================================ */
+
+@media print {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
