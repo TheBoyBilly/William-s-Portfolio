@@ -14,6 +14,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="moving-backgrounds.css" />
   <link rel="stylesheet" href="resume-contact.css" />
 </head>
 <body>
@@ -27,7 +28,13 @@
         </a>
       </div>
 
-      <nav class="main-nav" role="navigation" aria-label="Primary">
+      <!-- Scissor-Style Hamburger Menu Toggle Button (Mobile) -->
+      <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="main-nav">
+        <span class="hamburger-line line-top"></span>
+        <span class="hamburger-line line-bottom"></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" role="navigation" aria-label="Primary">
         <ul class="nav-list">
           <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
@@ -69,7 +76,7 @@
     </section>
 
     <!-- About: concise professional summary and focus areas -->
-    <section id="about" class="about reveal" aria-labelledby="about-heading">
+    <section id="about" class="about reveal" data-moving-bg="true" aria-labelledby="about-heading">
       <div class="about-inner">
         <h2 id="about-heading" class="section-title">About</h2>
         <p class="about-summary">
@@ -85,7 +92,7 @@
     </section>
 
     <!-- Skills: languages, frameworks, and tools -->
-    <section id="skills" class="skills reveal" aria-labelledby="skills-heading">
+    <section id="skills" class="skills reveal" data-moving-bg="true" aria-labelledby="skills-heading">
       <div class="skills-inner">
         <h2 id="skills-heading" class="section-title">Skills</h2>
 
@@ -124,7 +131,7 @@
     </section>
 
     <!-- Projects: project cards with title, description, tech list, and placeholder links -->
-    <section id="projects" class="projects reveal" aria-labelledby="projects-heading">
+    <section id="projects" class="projects reveal" data-moving-bg="true" aria-labelledby="projects-heading">
       <div class="projects-inner">
         <h2 id="projects-heading" class="section-title">Selected Projects</h2>
 
@@ -335,6 +342,7 @@
     </div>
   </footer>
 
+  <script src="moving-backgrounds.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScroll();
   initFormHandling();
   initResumeButtonInteraction();
+  initHamburgerMenu();
 });
 
 /* ============================================================================
@@ -262,6 +263,46 @@ function initResumeButtonInteraction() {
       setTimeout(() => {
         icon.style.animation = "";
       }, 600);
+    }
+  });
+}
+
+/* ============================================================================
+   HAMBURGER MENU TOGGLE (SCISSOR-STYLE)
+   Mobile navigation toggle with scissor-themed animation
+   ============================================================================ */
+
+function initHamburgerMenu() {
+  const hamburger = document.getElementById("hamburger-menu");
+  const mainNav = document.getElementById("main-nav");
+  
+  if (!hamburger || !mainNav) return;
+
+  // Toggle menu on hamburger click
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    mainNav.classList.toggle("active");
+    
+    // Update aria-expanded for accessibility
+    const isExpanded = hamburger.classList.contains("active");
+    hamburger.setAttribute("aria-expanded", isExpanded);
+  });
+
+  // Close menu when a nav link is clicked
+  mainNav.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      mainNav.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Close mobile menu when window is resized above tablet breakpoint
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      hamburger.classList.remove("active");
+      mainNav.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
     }
   });
 }

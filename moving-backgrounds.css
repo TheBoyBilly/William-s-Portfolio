@@ -1,0 +1,381 @@
+/* ============================================================================
+   PREMIUM MOVING BACKGROUND ANIMATIONS
+   Subtle, sophisticated gradient and position shifts for hero and large sections
+   ============================================================================ */
+
+/* ============================================================================
+   CONFIGURATION VARIABLES
+   Easily customizable movement parameters
+   ============================================================================ */
+
+:root {
+  /* Movement Timing — Adjust these for speed/intensity */
+  --bg-motion-slow: 45s;      /* Slowest motion (gradient shifts) */
+  --bg-motion-medium: 60s;    /* Medium motion (position changes) */
+  --bg-motion-fast: 75s;      /* Faster (but still subtle) motion */
+
+  /* Opacity/Intensity of moving elements (0-1) */
+  --bg-element-opacity: 0.08; /* Max opacity of moving backgrounds */
+  --bg-element-opacity-alt: 0.05; /* Alternative, more subtle opacity */
+
+  /* Size multipliers for moving elements */
+  --bg-element-size: 1;       /* 1 = normal, 2 = larger, 0.5 = smaller */
+}
+
+/* Respect user's accessibility preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --bg-motion-slow: 0s;
+    --bg-motion-medium: 0s;
+    --bg-motion-fast: 0s;
+  }
+
+  /* Disable animations for all moving background elements */
+  [data-moving-bg] {
+    animation: none !important;
+  }
+}
+
+/* ============================================================================
+   PRIMARY MOVING BACKGROUND ANIMATIONS
+   ============================================================================ */
+
+/* Gentle horizontal gradient shift — Creates depth perception */
+@keyframes bgGradientShiftHorizontal {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 25% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subtle vertical gradient shift — Creates subtle color breathing */
+@keyframes bgGradientShiftVertical {
+  0% {
+    background-position: 50% 0%;
+  }
+  33% {
+    background-position: 50% 25%;
+  }
+  66% {
+    background-position: 50% 75%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+/* Diagonal gradient animation — Combines horizontal and vertical movement */
+@keyframes bgGradientShiftDiagonal {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 25% 25%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Floating orb/circle animation — Smooth movement across section */
+@keyframes bgFloat {
+  0% {
+    transform: translateX(-10%) translateY(-10%) scale(1);
+  }
+  25% {
+    transform: translateX(15%) translateY(-5%) scale(1.05);
+  }
+  50% {
+    transform: translateX(20%) translateY(10%) scale(1);
+  }
+  75% {
+    transform: translateX(-5%) translateY(15%) scale(0.95);
+  }
+  100% {
+    transform: translateX(-10%) translateY(-10%) scale(1);
+  }
+}
+
+/* Counter-directional float — Creates balanced, organic motion */
+@keyframes bgFloatReverse {
+  0% {
+    transform: translateX(10%) translateY(10%) scale(1);
+  }
+  25% {
+    transform: translateX(-15%) translateY(5%) scale(0.95);
+  }
+  50% {
+    transform: translateX(-20%) translateY(-10%) scale(1);
+  }
+  75% {
+    transform: translateX(5%) translateY(-15%) scale(1.05);
+  }
+  100% {
+    transform: translateX(10%) translateY(10%) scale(1);
+  }
+}
+
+/* Soft pulsing opacity — Creates depth without sharp transitions */
+@keyframes bgPulseOpacity {
+  0%, 100% {
+    opacity: var(--bg-element-opacity);
+  }
+  50% {
+    opacity: calc(var(--bg-element-opacity) * 0.6);
+  }
+}
+
+/* Gentle scale breathing — Organic expansion/contraction */
+@keyframes bgScaleBreath {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* Dual-motion: Float + Scale — Complex, organic movement */
+@keyframes bgFloatAndScale {
+  0% {
+    transform: translateX(-8%) translateY(-8%) scale(0.95);
+  }
+  25% {
+    transform: translateX(12%) translateY(-5%) scale(1.03);
+  }
+  50% {
+    transform: translateX(15%) translateY(8%) scale(1.08);
+  }
+  75% {
+    transform: translateX(-3%) translateY(12%) scale(1);
+  }
+  100% {
+    transform: translateX(-8%) translateY(-8%) scale(0.95);
+  }
+}
+
+/* ============================================================================
+   HERO SECTION — MOVING BACKGROUND IMPLEMENTATION
+   ============================================================================ */
+
+/* Pseudo-element for primary moving gradient background */
+.hero::before {
+  /* Override existing animation */
+  animation: bgFloat var(--bg-motion-medium) ease-in-out infinite !important;
+}
+
+.hero::after {
+  /* Override existing animation */
+  animation: bgFloatReverse calc(var(--bg-motion-medium) * 1.2) ease-in-out infinite reverse !important;
+}
+
+/* Add a third layer for enhanced sophistication */
+.hero::backdrop {
+  /* This is pseudo, but demonstrates the structure */
+}
+
+/* Create a moving gradient overlay inside hero-inner for depth */
+.hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, calc(var(--bg-element-opacity) * 0.4)) 0%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0) 75%,
+    rgba(255, 255, 255, calc(var(--bg-element-opacity) * 0.2)) 100%
+  );
+  background-size: 200% 200%;
+  animation: bgGradientShiftDiagonal var(--bg-motion-slow) ease-in-out infinite;
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* Content sits above moving background */
+.hero-inner {
+  position: relative;
+}
+
+.hero-inner > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================================
+   SECTION CONTAINERS — MOVING BACKGROUND IMPLEMENTATION
+   Add subtle motion to section backgrounds
+   ============================================================================ */
+
+/* Generic section with moving background */
+section[data-moving-bg="true"] {
+  position: relative;
+  overflow: hidden;
+}
+
+section[data-moving-bg="true"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, var(--bg-element-opacity-alt)) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, var(--bg-element-opacity-alt)) 100%
+  );
+  background-size: 300% 300%;
+  animation: bgGradientShiftHorizontal var(--bg-motion-slow) ease-in-out infinite;
+  pointer-events: none;
+}
+
+section[data-moving-bg="true"]::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, var(--bg-element-opacity)) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: bgFloat var(--bg-motion-medium) ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* About section with different motion style */
+.about[data-moving-bg="true"] {
+  /* Uses inherited section motion */
+}
+
+.about[data-moving-bg="true"]::after {
+  bottom: -15%;
+  left: -10%;
+  top: auto;
+  animation: bgFloatReverse var(--bg-motion-fast) ease-in-out infinite;
+}
+
+/* Skills section with secondary moving element */
+.skills[data-moving-bg="true"] {
+  /* Uses inherited section motion */
+}
+
+.skills[data-moving-bg="true"]::after {
+  width: 350px;
+  height: 350px;
+  animation: bgFloatAndScale calc(var(--bg-motion-medium) * 1.1) ease-in-out infinite;
+}
+
+/* Projects section */
+.projects[data-moving-bg="true"] {
+  /* Uses inherited section motion */
+}
+
+.projects[data-moving-bg="true"]::after {
+  animation: bgFloat var(--bg-motion-medium) ease-in-out infinite;
+}
+
+/* ============================================================================
+   MOVING BACKGROUND UTILITY CLASSES
+   Apply to custom sections or containers
+   ============================================================================ */
+
+/* Soft gradient shift only (no floating elements) */
+.moving-bg--gradient-soft {
+  position: relative;
+  background-size: 200% 200%;
+  animation: bgGradientShiftHorizontal var(--bg-motion-slow) ease-in-out infinite;
+}
+
+/* Medium intensity float */
+.moving-bg--float-medium {
+  position: relative;
+  animation: bgFloat var(--bg-motion-medium) ease-in-out infinite;
+}
+
+/* High intensity float + scale */
+.moving-bg--float-intense {
+  position: relative;
+  animation: bgFloatAndScale var(--bg-motion-medium) ease-in-out infinite;
+}
+
+/* ============================================================================
+   REDUCED MOTION FALLBACK
+   Ensures no motion for users who prefer it
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  section[data-moving-bg="true"]::before,
+  section[data-moving-bg="true"]::after,
+  .hero-inner::before,
+  .moving-bg--gradient-soft,
+  .moving-bg--float-medium,
+  .moving-bg--float-intense {
+    animation: none !important;
+    opacity: 1 !important; /* Ensure visibility even without motion */
+  }
+}
+
+/* ============================================================================
+   PERFORMANCE OPTIMIZATION
+   Ensures smooth animation on low-end devices
+   ============================================================================ */
+
+/* Use GPU acceleration */
+.hero,
+section[data-moving-bg="true"],
+.hero::before,
+.hero::after,
+.hero-inner::before {
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Disable will-change when not animating to save memory */
+@media (prefers-reduced-motion: no-preference) {
+  .hero::before,
+  .hero::after,
+  .hero-inner::before,
+  section[data-moving-bg="true"]::before,
+  section[data-moving-bg="true"]::after {
+    will-change: auto;
+  }
+}
+
+/* ============================================================================
+   TESTING & DEVELOPMENT MODE
+   Uncomment to visualize moving background elements
+   ============================================================================ */
+
+/*
+.hero::before,
+.hero::after,
+.hero-inner::before,
+section[data-moving-bg="true"]::before,
+section[data-moving-bg="true"]::after  {
+  opacity: 0.5 !important; /* Make visible for debugging
+}
+*/

@@ -1,0 +1,211 @@
+/* ============================================================================
+   QUICK CUSTOMIZATION REFERENCE
+   Edit these variables to adjust the moving background system
+   ============================================================================ */
+
+:root {
+  /* =========================================================================
+     ANIMATION SPEEDS
+     
+     Slower (higher value) = subtler, more relaxed motion
+     Faster (lower value) = more dynamic, energetic motion
+     
+     Recommended ranges:
+     - Premium/subtle: 45s – 90s
+     - Standard: 30s – 60s
+     - Dynamic: 20s – 45s
+     
+     ========================================================================= */
+
+  --bg-motion-slow: 45s;      /* Gradient shifts (primary background) */
+  --bg-motion-medium: 60s;    /* Float animations (floating orbs) */
+  --bg-motion-fast: 75s;      /* Intense animations (float + scale) */
+
+  /* =========================================================================
+     OPACITY / INTENSITY
+     
+     Range: 0 to 1
+     - 0 = invisible
+     - 0.05 = very subtle
+     - 0.08 = default (recommended)
+     - 0.12 = noticeable
+     - 0.2+ = prominent (not recommended)
+     
+     ========================================================================= */
+
+  --bg-element-opacity: 0.08;     /* Main orb/elements opacity */
+  --bg-element-opacity-alt: 0.05; /* Background gradient opacity */
+
+  /* =========================================================================
+     SIZE MULTIPLIER
+     
+     Scaling factor for animated elements
+     - 0.5 = half size (subtle)
+     - 1 = normal (default)
+     - 1.5 = 50% larger (prominent)
+     - 2 = double size
+     
+     ========================================================================= */
+
+  --bg-element-size: 1;  /* 1 = normal size */
+}
+
+/* ============================================================================
+   PRESET CONFIGURATIONS
+   Copy these entire blocks to override the defaults above
+   ============================================================================ */
+
+/* PRESET 1: Ultra-Subtle (Premium, Almost Invisible) */
+/*
+:root {
+  --bg-motion-slow: 90s;
+  --bg-motion-medium: 120s;
+  --bg-motion-fast: 150s;
+  --bg-element-opacity: 0.04;
+  --bg-element-opacity-alt: 0.02;
+}
+*/
+
+/* PRESET 2: Balanced (Default - Recommended) */
+/*
+:root {
+  --bg-motion-slow: 45s;
+  --bg-motion-medium: 60s;
+  --bg-motion-fast: 75s;
+  --bg-element-opacity: 0.08;
+  --bg-element-opacity-alt: 0.05;
+}
+*/
+
+/* PRESET 3: Dynamic (More Noticeable Motion) */
+/*
+:root {
+  --bg-motion-slow: 30s;
+  --bg-motion-medium: 40s;
+  --bg-motion-fast: 50s;
+  --bg-element-opacity: 0.12;
+  --bg-element-opacity-alt: 0.08;
+}
+*/
+
+/* PRESET 4: Dramatic (Bold, Eye-Catching) */
+/*
+:root {
+  --bg-motion-slow: 20s;
+  --bg-motion-medium: 30s;
+  --bg-motion-fast: 40s;
+  --bg-element-opacity: 0.18;
+  --bg-element-opacity-alt: 0.12;
+}
+*/
+
+/* ============================================================================
+   SECTION-SPECIFIC OVERRIDES
+   Customize animation speeds for individual sections
+   ============================================================================ */
+
+/* Make About section more subtle */
+/*
+.about[data-moving-bg="true"]::before,
+.about[data-moving-bg="true"]::after {
+  animation-duration: 120s !important;
+}
+*/
+
+/* Make Skills section faster */
+/*
+.skills[data-moving-bg="true"]::before,
+.skills[data-moving-bg="true"]::after {
+  animation-duration: 45s !important;
+}
+*/
+
+/* Different opacity for Projects */
+/*
+.projects[data-moving-bg="true"]::before {
+  opacity: 0.15 !important;
+}
+*/
+
+/* ============================================================================
+   GRADIENT COLOR CUSTOMIZATION
+   Adjust the colors of moving gradients
+   ============================================================================ */
+
+/* Make gradients brighter (more visible) */
+/*
+section[data-moving-bg="true"]::before {
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, calc(var(--bg-element-opacity) * 1.5)) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, calc(var(--bg-element-opacity) * 1.5)) 100%
+  );
+}
+*/
+
+/* Add colored tint (very subtle) */
+/*
+section[data-moving-bg="true"]::after {
+  background: radial-gradient(
+    circle,
+    rgba(200, 220, 255, var(--bg-element-opacity)) 0%,
+    transparent 70%
+  );
+}
+*/
+
+/* ============================================================================
+   DISABLE ANIMATIONS FOR SPECIFIC SECTIONS
+   Set animation duration to 0s to disable motion
+   ============================================================================ */
+
+/*
+.about[data-moving-bg="true"]::before,
+.about[data-moving-bg="true"]::after {
+  animation: none !important;
+  opacity: 0 !important;
+}
+*/
+
+/* ============================================================================
+   HELPFUL COMMANDS FOR BROWSER CONSOLE
+   Copy and paste these into DevTools > Console to test settings
+   ============================================================================ */
+
+/*
+// View current animation configuration
+window.movingBgController.getStatus()
+
+// Temporarily speed up animations
+window.movingBgController.setAnimationSpeed('medium', '30s')
+window.movingBgController.setAnimationSpeed('slow', '20s')
+
+// Slow them down
+window.movingBgController.setAnimationSpeed('medium', '120s')
+
+// Disable all motion
+window.movingBgController.disableAnimations()
+
+// Re-enable motion
+window.movingBgController.enableAnimations()
+*/
+
+/* ============================================================================
+   COMMON ADJUSTMENTS
+   ============================================================================ */
+
+/* If animations feel too fast: */
+/* Increase values: --bg-motion-slow: 60s instead of 45s */
+
+/* If animations feel too slow: */
+/* Decrease values: --bg-motion-slow: 30s instead of 45s */
+
+/* If background is too visible (distracting): */
+/* Reduce opacity: --bg-element-opacity: 0.04 instead of 0.08 */
+
+/* If background is too subtle (invisible): */
+/* Increase opacity: --bg-element-opacity: 0.12 instead of 0.08 */
+
+/* If you want moving backgrounds on additional sections: */
+/* Add data-moving-bg="true" to the <section> tag */
