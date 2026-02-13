@@ -78,14 +78,13 @@ async function initGitHubRepos() {
       const card = document.createElement("article");
       card.className = "repo-card";
 
-      // Thumbnail: use repo homepage when available or fallback to hero image
+      // Thumbnail: prefer owner's avatar, then homepage, then site-wide OG placeholder
       const thumb = document.createElement("img");
       thumb.className = "repo-thumb";
       thumb.alt = `${repo.name} preview`;
-      thumb.src = 
-        (repo.homepage && repo.homepage !== "")
-          ? repo.homepage
-          : "/contents/My%20image.png";
+      const avatar = repo.owner && repo.owner.avatar_url ? repo.owner.avatar_url : null;
+      const homepage = repo.homepage && repo.homepage !== "" ? repo.homepage : null;
+      thumb.src = avatar || homepage || "/contents/og-image.svg";
       card.appendChild(thumb);
 
       const title = document.createElement("h3");
