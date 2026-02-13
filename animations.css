@@ -105,6 +105,19 @@
   }
 }
 
+/* Animated Gradient Text — Premium Black & White flow */
+@keyframes gradientTextShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Grain Texture Animation */
 @keyframes grain-drift {
   0% {

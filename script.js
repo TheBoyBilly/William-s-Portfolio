@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFormHandling();
   initResumeButtonInteraction();
   initHamburgerMenu();
+  initGitHubRepos();
 });
 
 /* ============================================================================
@@ -35,6 +36,107 @@ function initParallax() {
       heroImage.style.transform = `translateY(${parallaxOffset * 0.15}px)`;
     }
   });
+}
+
+/* ============================================================================
+   GITHUB REPOSITORIES: Fetch & Render
+   Fetches latest repos for TheBoyBilly, shows loader, handles errors.
+   ============================================================================ */
+async function initGitHubRepos() {
+  const container = document.getElementById("repo-container");
+  const loading = document.getElementById("repo-loading");
+  const errorEl = document.getElementById("repo-error");
+
+  if (!container) return;
+
+  // Show loading
+  if (loading) loading.style.display = "flex";
+  if (errorEl) errorEl.textContent = "";
+
+  try {
+    // Fetch repositories (sorted by updated_at server-side, but we sort client-side to be safe)
+    const res = await fetch("https://api.github.com/users/TheBoyBilly/repos?per_page=100&sort=updated");
+    if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+
+    const data = await res.json();
+
+    // Ensure array and sort by updated_at desc
+    const repos = Array.isArray(data)
+      ? data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 4)
+      : [];
+
+    // Clear container
+    container.innerHTML = "";
+
+    if (repos.length === 0) {
+      container.innerHTML = "<p class=\"repo-error\">No repositories found.</p>";
+      return;
+    }
+
+    // Create cards (with thumbnail preview). Stars removed per request.
+    repos.forEach((repo) => {
+      const card = document.createElement("article");
+      card.className = "repo-card";
+
+      // Thumbnail: use repo homepage when available or fallback to hero image
+      const thumb = document.createElement("img");
+      thumb.className = "repo-thumb";
+      thumb.alt = `${repo.name} preview`;
+      thumb.src = 
+        (repo.homepage && repo.homepage !== "")
+          ? repo.homepage
+          : "/contents/My%20image.png";
+      card.appendChild(thumb);
+
+      const title = document.createElement("h3");
+      title.textContent = repo.name || "Unnamed repository";
+      card.appendChild(title);
+
+      const desc = document.createElement("p");
+      desc.textContent = repo.description || "No description provided.";
+      desc.className = "repo-description";
+      card.appendChild(desc);
+
+      const meta = document.createElement("div");
+      meta.className = "repo-meta";
+      const lang = document.createElement("span");
+      lang.textContent = repo.language || "Unknown";
+      meta.appendChild(lang);
+
+      card.appendChild(meta);
+
+      const links = document.createElement("div");
+      links.className = "repo-links";
+
+      const ghLink = document.createElement("a");
+      ghLink.className = "repo-link";
+      ghLink.href = repo.html_url;
+      ghLink.target = "_blank";
+      ghLink.rel = "noopener noreferrer";
+      ghLink.textContent = "View on GitHub";
+      links.appendChild(ghLink);
+
+      if (repo.homepage) {
+        const live = document.createElement("a");
+        live.className = "repo-link";
+        live.href = repo.homepage;
+        live.target = "_blank";
+        live.rel = "noopener noreferrer";
+        live.textContent = "Live Site";
+        links.appendChild(live);
+      }
+
+      card.appendChild(links);
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error(err);
+    if (errorEl) {
+      errorEl.textContent = "Unable to load repositories. Please try again later.";
+    }
+  } finally {
+    if (loading) loading.style.display = "none";
+  }
 }
 
 /* ============================================================================

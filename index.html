@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>William Lawal — Frontend Web Developer &amp; Web Designer</title>
   <meta name="description" content="Portfolio of William Lawal — Frontend Web Developer &amp; Web Designer based in Abuja, Nigeria. Focused on accessible, semantic web interfaces and product-focused designs." />
+  <!-- Open Graph / Social preview: use hero image as preview (Vercel-like) -->
+  <meta property="og:title" content="William Lawal — Frontend Web Developer" />
+  <meta property="og:description" content="I build accessible, responsive interfaces and polished landing experiences." />
+  <meta property="og:image" content="/contents/My%20image.png" />
+  <meta property="og:image:alt" content="William Lawal — Portfolio preview" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="William Lawal — Frontend Web Developer" />
+  <meta name="twitter:description" content="I build accessible, responsive interfaces and polished landing experiences." />
+  <meta name="twitter:image" content="/contents/My%20image.png" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,6 +26,9 @@
   <link rel="stylesheet" href="animations.css" />
   <link rel="stylesheet" href="moving-backgrounds.css" />
   <link rel="stylesheet" href="resume-contact.css" />
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/d8d9c0d21b.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Header: site branding and primary navigation -->
@@ -58,6 +71,49 @@
           <p class="hero-subtitle">Frontend Web Developer &amp; Web Designer — Abuja, Nigeria</p>
           <p class="hero-tagline">I build accessible, responsive interfaces and polished landing experiences focused on usability and performance.</p>
 
+          <div class="hero-tech-stack">
+            <div class="hero-tech-icon">
+              <i class="fa-brands fa-html5"></i>
+              <span class="hero-tech-label">HTML</span>
+            </div>
+            <div class="hero-tech-icon">
+              <i class="fa-brands fa-css3-alt"></i>
+              <span class="hero-tech-label">CSS</span>
+            </div>
+            <div class="hero-tech-icon">
+              <i class="fa-brands fa-js"></i>
+              <span class="hero-tech-label">JavaScript</span>
+            </div>
+            <div class="hero-tech-icon">
+              <i class="fa-brands fa-react"></i>
+              <span class="hero-tech-label">React</span>
+            </div>
+            <div class="hero-tech-icon">
+              <i class="fa-brands fa-github"></i>
+              <span class="hero-tech-label">GitHub</span>
+            </div>
+            <div class="hero-tech-icon">
+              <svg class="hero-tech-svg" width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="vscode-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#007ACC"/>
+                    <stop offset="100%" stop-color="#005A9E"/>
+                  </linearGradient>
+                </defs>
+                <path fill="url(#vscode-grad)" d="M12 64 L64 32 L192 128 L64 224 L12 192 L128 128 Z"/>
+                <path fill="white" d="M76 44 L148 116 L76 188 L76 44 Z"/>
+              </svg>
+              <span class="hero-tech-label">VS Code</span>
+            </div>
+            <div class="hero-tech-icon">
+              <svg class="hero-tech-svg" width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <rect width="256" height="256" fill="currentColor" opacity="0"/>
+                <path fill="currentColor" d="M64 48 H192 V112 H128 L64 48 Z M64 112 H128 V176 L64 112 Z M64 176 H128 V240 L64 176 Z"/>
+              </svg>
+              <span class="hero-tech-label">Framer</span>
+            </div>
+          </div>
+
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#projects">View Projects</a>
             <a class="btn btn-secondary" href="#contact">Contact Me</a>
@@ -74,13 +130,30 @@
         </figure>
       </div>
     </section>
+    </section>
 
+    <!-- GitHub Repos: dynamic latest repos -->
+    <section id="github-repos" class="github-repos reveal" aria-labelledby="github-repos-heading">
+      <div class="github-repos-inner">
+        <h2 id="github-repos-heading" class="section-title">Latest GitHub Repositories</h2>
+        <p class="section-intro">A selection of my most recently updated projects on GitHub.</p>
+
+        <div id="repo-loading" class="repo-loading" aria-hidden="true">
+          <div class="spinner" role="status" aria-hidden="true"></div>
+          <span class="loading-text">Loading repositories…</span>
+        </div>
+
+        <div id="repo-error" class="repo-error" role="status" aria-live="polite"></div>
+
+        <div id="repo-container" class="repos-grid" aria-live="polite"></div>
+      </div>
+    </section>
     <!-- About: concise professional summary and focus areas -->
     <section id="about" class="about reveal" data-moving-bg="true" aria-labelledby="about-heading">
       <div class="about-inner">
         <h2 id="about-heading" class="section-title">About</h2>
         <p class="about-summary">
-          I am a freelance frontend developer with over a year of experience delivering client-facing websites and landing pages. My work emphasizes semantic HTML, accessibility, and pragmatic, maintainable code. I enjoy collaborating on product-focused designs and turning design concepts into reliable user experiences.
+          I'm a frontend developer and web designer focused on building accessible, high-performance interfaces that feel intentional and polished. With over a year of professional experience, I specialize in semantic HTML, responsive design, and turning complex design requirements into clean, maintainable code. I work closely with designers and stakeholders to understand product goals, ensuring every interface prioritizes clarity, usability, and accessibility (a11y). My approach combines attention to detail, pragmatic problem-solving, and a deep respect for performance—because the best user experience is one that's fast and invisible.
         </p>
 
         <ul class="about-meta">
