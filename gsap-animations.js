@@ -556,6 +556,15 @@
         card.setAttribute("data-tilt", "");
         card.style.opacity = "0";
 
+        // Fix broken URLs or specific overrides
+        const urlOverrides = {
+          "VidMetrics-Lite": "https://vidmetrics.vercel.app",
+        };
+
+        if (urlOverrides[repo.name]) {
+          repo.homepage = urlOverrides[repo.name];
+        }
+
         // Screenshot thumbnail
         const thumbWrapper = document.createElement("div");
         thumbWrapper.className = "project-thumb-wrapper";

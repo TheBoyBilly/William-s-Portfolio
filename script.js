@@ -87,8 +87,22 @@ function initFormHandling() {
       });
 
       if (response.ok) {
-        statusEl.textContent =
-          "Thanks — your message has been sent. I'll reply within 24 hours.";
+        // High-end Success Animation
+        const tl = gsap.timeline();
+        tl.to(form, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" })
+          .set(form, { display: "none" })
+          .fromTo(statusEl, 
+            { opacity: 0, y: 20, display: "block" },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
+          );
+
+        statusEl.innerHTML = `
+          <div class="success-message">
+            <div class="success-icon">✓</div>
+            <h3>Message Sent!</h3>
+            <p>Thanks — your message has been sent. I'll reply within 24 hours.</p>
+          </div>
+        `;
         statusEl.className = "form-status success";
         form.reset();
         inputs.forEach((input) => {
