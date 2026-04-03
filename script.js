@@ -1,175 +1,23 @@
 /* ============================================================================
-   PORTFOLIO INTERACTIONS & ANIMATIONS
-   Minimal JavaScript for enhanced micro-interactions and scroll effects
+   PORTFOLIO CORE INTERACTIONS
+   Handles form validation, hamburger menu, header scroll, and keyboard nav.
+   All scroll animations, parallax, and smooth scroll are handled by
+   gsap-animations.js (GSAP + Lenis)
    ============================================================================ */
 
-// Initialize when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  initParallax();
-  initSmoothScroll();
   initHeaderScroll();
   initFormHandling();
   initResumeButtonInteraction();
   initHamburgerMenu();
-  initGitHubRepos();
 });
 
 /* ============================================================================
-   PARALLAX SCROLL EFFECT
-   Subtle parallax movement on the hero image
-   ============================================================================ */
-
-function initParallax() {
-  const heroImage = document.querySelector(".hero-image");
-  
-  if (!heroImage) return;
-
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const heroSection = document.querySelector(".hero");
-    const heroRect = heroSection.getBoundingClientRect();
-
-    // Only apply parallax while hero is in view
-    if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
-      // Calculate parallax offset (slower than scroll)
-      const parallaxOffset = scrollY * 0.5;
-      heroImage.style.transform = `translateY(${parallaxOffset * 0.15}px)`;
-    }
-  });
-}
-
-/* ============================================================================
-   GITHUB REPOSITORIES: Fetch & Render
-   Fetches latest repos for TheBoyBilly, shows loader, handles errors.
-   ============================================================================ */
-async function initGitHubRepos() {
-  const container = document.getElementById("repo-container");
-  const loading = document.getElementById("repo-loading");
-  const errorEl = document.getElementById("repo-error");
-
-  if (!container) return;
-
-  // Show loading
-  if (loading) loading.style.display = "flex";
-  if (errorEl) errorEl.textContent = "";
-
-  try {
-    // Fetch repositories (sorted by updated_at server-side, but we sort client-side to be safe)
-    const res = await fetch("https://api.github.com/users/TheBoyBilly/repos?per_page=100&sort=updated");
-    if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
-
-    const data = await res.json();
-
-    // Ensure array and sort by updated_at desc
-    const repos = Array.isArray(data)
-      ? data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 4)
-      : [];
-
-    // Clear container
-    container.innerHTML = "";
-
-    if (repos.length === 0) {
-      container.innerHTML = "<p class=\"repo-error\">No repositories found.</p>";
-      return;
-    }
-
-    // Create cards (with thumbnail preview). Stars removed per request.
-    repos.forEach((repo) => {
-      const card = document.createElement("article");
-      card.className = "repo-card";
-
-      // Thumbnail: prefer owner's avatar, then homepage, then site-wide OG placeholder
-      const thumb = document.createElement("img");
-      thumb.className = "repo-thumb";
-      thumb.alt = `${repo.name} preview`;
-      const avatar = repo.owner && repo.owner.avatar_url ? repo.owner.avatar_url : null;
-      const homepage = repo.homepage && repo.homepage !== "" ? repo.homepage : null;
-      thumb.src = avatar || homepage || "/contents/og-image.svg";
-      card.appendChild(thumb);
-
-      const title = document.createElement("h3");
-      title.textContent = repo.name || "Unnamed repository";
-      card.appendChild(title);
-
-      const desc = document.createElement("p");
-      desc.textContent = repo.description || "No description provided.";
-      desc.className = "repo-description";
-      card.appendChild(desc);
-
-      const meta = document.createElement("div");
-      meta.className = "repo-meta";
-      const lang = document.createElement("span");
-      lang.textContent = repo.language || "Unknown";
-      meta.appendChild(lang);
-
-      card.appendChild(meta);
-
-      const links = document.createElement("div");
-      links.className = "repo-links";
-
-      const ghLink = document.createElement("a");
-      ghLink.className = "repo-link";
-      ghLink.href = repo.html_url;
-      ghLink.target = "_blank";
-      ghLink.rel = "noopener noreferrer";
-      ghLink.textContent = "View on GitHub";
-      links.appendChild(ghLink);
-
-      if (repo.homepage) {
-        const live = document.createElement("a");
-        live.className = "repo-link";
-        live.href = repo.homepage;
-        live.target = "_blank";
-        live.rel = "noopener noreferrer";
-        live.textContent = "Live Site";
-        links.appendChild(live);
-      }
-
-      card.appendChild(links);
-      container.appendChild(card);
-    });
-  } catch (err) {
-    console.error(err);
-    if (errorEl) {
-      errorEl.textContent = "Unable to load repositories. Please try again later.";
-    }
-  } finally {
-    if (loading) loading.style.display = "none";
-  }
-}
-
-/* ============================================================================
-   SMOOTH SCROLL BEHAVIOR
-   Enhanced smooth scrolling for all anchor links
-   ============================================================================ */
-
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
-      const target = document.querySelector(href);
-
-      // Skip if target doesn't exist or is a javascript link
-      if (!target || href === "#") return;
-
-      e.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  });
-}
-
-/* ============================================================================
    HEADER SCROLL DETECTION
-   Add shadow effect to header when page is scrolled
    ============================================================================ */
 
 function initHeaderScroll() {
   const header = document.querySelector(".site-header");
-  
   if (!header) return;
 
   window.addEventListener("scroll", () => {
@@ -182,86 +30,7 @@ function initHeaderScroll() {
 }
 
 /* ============================================================================
-   INTERSECTION OBSERVER FOR LAZY ANIMATION
-   Trigger animations when sections come into view (optional enhancement)
-   ============================================================================ */
-
-function initIntersectionObserver() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Add the in-view marker
-        entry.target.classList.add("in-view");
-
-        // Stagger child elements for a polished entrance
-        const children = Array.from(entry.target.children || []);
-        children.forEach((child, i) => {
-          // Apply a small stagger via inline animation with delay
-          child.style.animation = `revealIn 560ms cubic-bezier(0.2,0.8,0.2,1) both ${i * 80}ms`;
-        });
-
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Observe only elements marked for reveal to reduce work
-  document.querySelectorAll(".reveal, .project-card").forEach((el) => {
-    observer.observe(el);
-  });
-}
-
-// Call intersection observer if browser supports it
-if ("IntersectionObserver" in window) {
-  document.addEventListener("DOMContentLoaded", initIntersectionObserver);
-}
-
-/* ============================================================================
-   KEYBOARD ACCESSIBILITY
-   Handle keyboard focus management
-   ============================================================================ */
-
-function initKeyboardNav() {
-  // Track keyboard usage
-  let isKeyboardUser = false;
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Tab") {
-      isKeyboardUser = true;
-    }
-  });
-
-  document.addEventListener("mousedown", () => {
-    isKeyboardUser = false;
-  });
-
-  // Apply focus styles only for keyboard users
-  document.body.classList.toggle("keyboard-nav", isKeyboardUser);
-}
-
-initKeyboardNav();
-
-/* ============================================================================
-   PREVENT LAYOUT SHIFT
-   Minor optimization for better perceived performance
-   ============================================================================ */
-
-// Preload critical images
-window.addEventListener("load", () => {
-  const heroImage = document.querySelector(".hero-image");
-  if (heroImage && heroImage.complete) {
-    heroImage.style.opacity = "1";
-  }
-});
-
-/* ============================================================================
    FORM HANDLING & VALIDATION
-   Enhance form interactions and provide user feedback
    ============================================================================ */
 
 function initFormHandling() {
@@ -289,27 +58,22 @@ function initFormHandling() {
     });
   });
 
-  // Accessible status element for messages
   const statusEl = document.getElementById("form-status");
 
   form.addEventListener("submit", async (e) => {
-    // Prevent normal form submission to show inline feedback
     e.preventDefault();
 
     const submitBtn = form.querySelector(".btn-submit");
     const originalText = submitBtn.textContent;
 
-    // Basic client-side validation for email field
     const email = form.querySelector('input[name="email"]');
     if (email && !email.checkValidity()) {
-      // Inform user of invalid email
       statusEl.textContent = "Please provide a valid email address.";
       statusEl.className = "form-status error";
       email.focus();
       return;
     }
 
-    // Disable button while submitting
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending…";
 
@@ -323,24 +87,25 @@ function initFormHandling() {
       });
 
       if (response.ok) {
-        // Success — show accessible success message
-        statusEl.textContent = "Thanks — your message has been sent. I'll reply within 24 hours.";
+        statusEl.textContent =
+          "Thanks — your message has been sent. I'll reply within 24 hours.";
         statusEl.className = "form-status success";
-        // Reset form and visual states
         form.reset();
         inputs.forEach((input) => {
           input.parentElement.classList.remove("filled", "focused");
         });
       } else {
-        // Try to parse JSON error from Formspree
         const data = await response.json().catch(() => ({}));
-        const errMsg = (data && data.error) ? data.error : "Something went wrong. Please try again later.";
+        const errMsg =
+          data && data.error
+            ? data.error
+            : "Something went wrong. Please try again later.";
         statusEl.textContent = errMsg;
         statusEl.className = "form-status error";
       }
     } catch (err) {
-      // Network or other error
-      statusEl.textContent = "Network error — please check your connection and try again.";
+      statusEl.textContent =
+        "Network error — please check your connection and try again.";
       statusEl.className = "form-status error";
     } finally {
       submitBtn.disabled = false;
@@ -351,13 +116,13 @@ function initFormHandling() {
 
 /* ============================================================================
    RESUME BUTTON INTERACTION
-   Enhanced download button feedback
    ============================================================================ */
 
 function initResumeButtonInteraction() {
   const resumeBtn = document.querySelector(".btn-resume");
   if (!resumeBtn) return;
-  resumeBtn.addEventListener("click", (e) => {
+
+  resumeBtn.addEventListener("click", () => {
     const icon = resumeBtn.querySelector(".btn-icon");
     if (icon) {
       icon.style.animation = "bounce 0.6s ease-in-out";
@@ -369,24 +134,24 @@ function initResumeButtonInteraction() {
 }
 
 /* ============================================================================
-   HAMBURGER MENU TOGGLE (SCISSOR-STYLE)
-   Mobile navigation toggle with scissor-themed animation
+   HAMBURGER MENU TOGGLE
    ============================================================================ */
 
 function initHamburgerMenu() {
   const hamburger = document.getElementById("hamburger-menu");
   const mainNav = document.getElementById("main-nav");
-  
+
   if (!hamburger || !mainNav) return;
 
-  // Toggle menu on hamburger click
   hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     mainNav.classList.toggle("active");
-    
-    // Update aria-expanded for accessibility
+
     const isExpanded = hamburger.classList.contains("active");
     hamburger.setAttribute("aria-expanded", isExpanded);
+
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = isExpanded ? "hidden" : "";
   });
 
   // Close menu when a nav link is clicked
@@ -395,15 +160,28 @@ function initHamburgerMenu() {
       hamburger.classList.remove("active");
       mainNav.classList.remove("active");
       hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
     });
   });
 
-  // Close mobile menu when window is resized above tablet breakpoint
+  // Close on resize above mobile
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
       hamburger.classList.remove("active");
       mainNav.classList.remove("active");
       hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
     }
   });
 }
+
+/* ============================================================================
+   PRELOAD HERO IMAGE
+   ============================================================================ */
+
+window.addEventListener("load", () => {
+  const heroImage = document.querySelector(".hero-image");
+  if (heroImage && heroImage.complete) {
+    heroImage.style.opacity = "1";
+  }
+});

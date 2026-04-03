@@ -1,25 +1,25 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>William Lawal — Frontend Web Developer &amp; Web Designer</title>
-  <meta name="description" content="Portfolio of William Lawal — Frontend Web Developer &amp; Web Designer based in Abuja, Nigeria. Focused on accessible, semantic web interfaces and product-focused designs." />
-  <!-- Open Graph / Social preview: use hero image as preview (Vercel-like) -->
-  <meta property="og:title" content="William Lawal — Frontend Web Developer" />
-  <meta property="og:description" content="I build accessible, responsive interfaces and polished landing experiences." />
+  <title>William Lawal — Frontend Engineer & Digital Experience Architect</title>
+  <meta name="description" content="Portfolio of William Lawal — Frontend Engineer building premium digital experiences with React, TypeScript, and modern web technologies. Based in Abuja, Nigeria." />
+  <!-- Open Graph / Social preview -->
+  <meta property="og:title" content="William Lawal — Frontend Engineer" />
+  <meta property="og:description" content="I craft premium digital experiences that convert visitors into customers." />
   <meta property="og:image" content="/contents/og-image.svg" />
   <meta property="og:image:alt" content="William Lawal — Portfolio preview" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="William Lawal — Frontend Web Developer" />
-  <meta name="twitter:description" content="I build accessible, responsive interfaces and polished landing experiences." />
+  <meta name="twitter:title" content="William Lawal — Frontend Engineer" />
+  <meta name="twitter:description" content="I craft premium digital experiences that convert visitors into customers." />
   <meta name="twitter:image" content="/contents/og-image.svg" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
@@ -31,19 +31,39 @@
   <script src="https://kit.fontawesome.com/d8d9c0d21b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-name">
+        <span class="preloader-char">W</span><span class="preloader-char">i</span><span class="preloader-char">l</span><span class="preloader-char">l</span><span class="preloader-char">i</span><span class="preloader-char">a</span><span class="preloader-char">m</span>
+        <span class="preloader-space"></span>
+        <span class="preloader-char">L</span><span class="preloader-char">a</span><span class="preloader-char">w</span><span class="preloader-char">a</span><span class="preloader-char">l</span>
+      </div>
+      <div class="preloader-line"></div>
+      <div class="preloader-role">Frontend Engineer</div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Cursor Glow (desktop only) -->
+  <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+
   <!-- Header: site branding and primary navigation -->
   <header class="site-header" role="banner">
     <div class="header-inner">
       <div class="site-branding">
         <a class="site-logo" href="#hero" aria-label="William Lawal — Go to top">
           <span class="name-text">William Lawal</span>
-          <span class="name-role">Frontend Web Developer &amp; Web Designer</span>
+          <span class="name-role">Frontend Engineer</span>
         </a>
       </div>
 
-      <!-- Scissor-Style Hamburger Menu Toggle Button (Mobile) -->
+      <!-- Hamburger Menu Toggle Button (Mobile) -->
       <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="main-nav">
         <span class="hamburger-line line-top"></span>
+        <span class="hamburger-line line-middle"></span>
         <span class="hamburger-line line-bottom"></span>
       </button>
 
@@ -58,71 +78,67 @@
         </ul>
       </nav>
 
-      <a class="btn btn-header" href="#contact">Hire Me</a>
+      <a class="btn btn-header magnetic" href="#contact">Hire Me</a>
     </div>
   </header>
 
   <main id="main" class="site-main" role="main">
-    <!-- Hero: introduction, role, short tagline, primary CTAs, and visual image -->
-    <section id="hero" class="hero reveal" aria-labelledby="hero-heading">
+    <!-- Hero -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="hero-aurora" aria-hidden="true">
+        <div class="aurora-orb aurora-orb-1"></div>
+        <div class="aurora-orb aurora-orb-2"></div>
+        <div class="aurora-orb aurora-orb-3"></div>
+      </div>
       <div class="hero-inner">
         <div class="hero-content">
-          <h1 id="hero-heading" class="hero-title">William Lawal</h1>
-          <p class="hero-subtitle">Frontend Web Developer &amp; Web Designer — Abuja, Nigeria</p>
-          <p class="hero-tagline">I build accessible, responsive interfaces and polished landing experiences focused on usability and performance.</p>
+          <h1 id="hero-heading" class="hero-title" style="color: #ffffff !important; opacity: 1 !important; visibility: visible !important; display: block !important; position: relative !important; z-index: 10 !important;">HELLO!, My name is William Lawal.</h1>
+          <p class="hero-tagline">I craft premium digital experiences that turn visitors into customers. From high-converting landing pages to complex web applications — pixel-perfect, blazing fast, and built to impress and function.</p>
 
           <div class="hero-tech-stack">
-            <div class="hero-tech-icon">
+            <div class="hero-tech-icon stagger-up-item">
               <i class="fa-brands fa-html5"></i>
               <span class="hero-tech-label">HTML</span>
             </div>
-            <div class="hero-tech-icon">
+            <div class="hero-tech-icon stagger-up-item">
               <i class="fa-brands fa-css3-alt"></i>
               <span class="hero-tech-label">CSS</span>
             </div>
-            <div class="hero-tech-icon">
+            <div class="hero-tech-icon stagger-up-item">
               <i class="fa-brands fa-js"></i>
               <span class="hero-tech-label">JavaScript</span>
+            </div>
+            <div class="hero-tech-icon">
+              <svg class="hero-tech-svg" width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M0 128v128h256V0H0zm200.3-47.1l-37.5 174.7h-30.4l37.5-174.7h30.4zM96.5 207.5l-3-20.5 57.3-43-57.3-43 3-20.5 80 63.5-80 63.5z"/>
+              </svg>
+              <span class="hero-tech-label">TypeScript</span>
             </div>
             <div class="hero-tech-icon">
               <i class="fa-brands fa-react"></i>
               <span class="hero-tech-label">React</span>
             </div>
             <div class="hero-tech-icon">
+              <svg class="hero-tech-svg" width="24" height="24" viewBox="0 0 256 154" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M128 0C93.8 0 72.3 17.1 64 51.2 76.8 34.1 91.2 28.6 108.8 34.1c10 3.2 17.2 10.6 25.2 18.7C148.8 68 166 85.3 204.8 85.3c34.1 0 55.7-17.1 64-51.2-12.8 17.1-27.2 22.6-44.8 17.1-10-3.2-17.2-10.6-25.2-18.7C184 17.3 166.8 0 128 0zM64 85.3C29.9 85.3 8.3 102.4 0 136.5c12.8-17.1 27.2-22.6 44.8-17.1 10 3.2 17.2 10.6 25.2 18.7 14.8 15.2 32 32.5 70.8 32.5 34.1 0 55.7-17.1 64-51.2-12.8 17.1-27.2 22.6-44.8 17.1-10-3.2-17.2-10.6-25.2-18.7-14.8-15.2-32-32.5-70.8-32.5z"/>
+              </svg>
+              <span class="hero-tech-label">Tailwind</span>
+            </div>
+            <div class="hero-tech-icon">
               <i class="fa-brands fa-github"></i>
               <span class="hero-tech-label">GitHub</span>
             </div>
-            <div class="hero-tech-icon">
-              <svg class="hero-tech-svg" width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="vscode-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#007ACC"/>
-                    <stop offset="100%" stop-color="#005A9E"/>
-                  </linearGradient>
-                </defs>
-                <path fill="url(#vscode-grad)" d="M12 64 L64 32 L192 128 L64 224 L12 192 L128 128 Z"/>
-                <path fill="white" d="M76 44 L148 116 L76 188 L76 44 Z"/>
-              </svg>
-              <span class="hero-tech-label">VS Code</span>
-            </div>
-            <div class="hero-tech-icon">
-              <svg class="hero-tech-svg" width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                <rect width="256" height="256" fill="currentColor" opacity="0"/>
-                <path fill="currentColor" d="M64 48 H192 V112 H128 L64 48 Z M64 112 H128 V176 L64 112 Z M64 176 H128 V240 L64 176 Z"/>
-              </svg>
-              <span class="hero-tech-label">Framer</span>
-            </div>
           </div>
 
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          <div class="hero-ctas" data-animate="fade-up">
+            <a class="btn btn-primary magnetic" href="#projects">View Projects</a>
+            <a class="btn btn-secondary magnetic" href="#contact">Contact Me</a>
           </div>
         </div>
 
         <figure class="hero-visual" aria-label="Hero visual image">
-          <div class="hero-image-wrapper">
-            <img src="contents/My image.png" alt="William Lawal — Frontend Developer" class="hero-image" />
+          <div class="hero-image-wrapper" data-tilt>
+            <img src="contents/My image.png" alt="William Lawal — Frontend Engineer" class="hero-image" />
             <div class="hero-image-overlay" aria-hidden="true"></div>
             <div class="hero-image-grain" aria-hidden="true"></div>
             <div class="hero-image-vignette" aria-hidden="true"></div>
@@ -130,154 +146,104 @@
         </figure>
       </div>
     </section>
-    </section>
-
-    <!-- GitHub Repos: dynamic latest repos -->
-    <section id="github-repos" class="github-repos reveal" aria-labelledby="github-repos-heading">
-      <div class="github-repos-inner">
-        <h2 id="github-repos-heading" class="section-title">Latest GitHub Repositories</h2>
-        <p class="section-intro">A selection of my most recently updated projects on GitHub.</p>
-
-        <div id="repo-loading" class="repo-loading" aria-hidden="true">
-          <div class="spinner" role="status" aria-hidden="true"></div>
-          <span class="loading-text">Loading repositories…</span>
+    <!-- About -->
+    <section id="about" class="about" data-moving-bg="true" aria-labelledby="about-heading">
+      <div class="about-inner">
+        <h2 id="about-heading" class="section-title" data-split-text>About</h2>
+        <div class="about-summary-container">
+          <p class="about-summary" data-animate="fade-up">
+            I build modern websites that help businesses stand out, perform better, and grow with confidence. My focus is simple: create clean, responsive, and reliable digital experiences that work smoothly across devices and leave a strong impression. I also work with AI-assisted development to move faster and deliver efficiently. This means quicker turnaround times, smarter problem-solving, and high-quality results without cutting corners. You get speed, precision, and a final product built to last. Whether it’s a business website or a full platform, the goal is always the same: build something that works, looks great, and delivers real value.
+          </p>
         </div>
 
-        <div id="repo-error" class="repo-error" role="status" aria-live="polite"></div>
-
-        <div id="repo-container" class="repos-grid" aria-live="polite"></div>
-      </div>
-    </section>
-    <!-- About: concise professional summary and focus areas -->
-    <section id="about" class="about reveal" data-moving-bg="true" aria-labelledby="about-heading">
-      <div class="about-inner">
-        <h2 id="about-heading" class="section-title">About</h2>
-        <p class="about-summary">
-          I'm a frontend developer and web designer focused on building accessible, high-performance interfaces that feel intentional and polished. With over a year of professional experience, I specialize in semantic HTML, responsive design, and turning complex design requirements into clean, maintainable code. I work closely with designers and stakeholders to understand product goals, ensuring every interface prioritizes clarity, usability, and accessibility (a11y). My approach combines attention to detail, pragmatic problem-solving, and a deep respect for performance—because the best user experience is one that's fast and invisible.
-        </p>
-
-        <ul class="about-meta">
+        <ul class="about-meta" data-animate="stagger-up">
           <li class="meta-item"><strong>Location:</strong> Abuja, Nigeria</li>
           <li class="meta-item"><strong>Email:</strong> <a href="mailto:williamlawal88@gmail.com">williamlawal88@gmail.com</a></li>
-          <li class="meta-item"><strong>Availability:</strong> Freelance / contract engagements</li>
+          <li class="meta-item"><strong>Availability:</strong> Open for freelance & contract work</li>
         </ul>
       </div>
     </section>
 
-    <!-- Skills: languages, frameworks, and tools -->
-    <section id="skills" class="skills reveal" data-moving-bg="true" aria-labelledby="skills-heading">
+    <!-- Skills -->
+    <section id="skills" class="skills" data-moving-bg="true" aria-labelledby="skills-heading">
       <div class="skills-inner">
-        <h2 id="skills-heading" class="section-title">Skills</h2>
+        <h2 id="skills-heading" class="section-title" data-split-text>Skills</h2>
 
         <div class="skills-grid">
-          <div class="skills-group languages">
+          <div class="skills-group languages" data-tilt>
             <h3 class="skills-group-title">Languages &amp; Technologies</h3>
             <ul class="skills-list">
-              <li class="skill">HTML</li>
-              <li class="skill">CSS</li>
-              <li class="skill">JavaScript</li>
-              <li class="skill">React (fundamentals)</li>
+              <li class="skill">HTML5</li>
+              <li class="skill">CSS3</li>
+              <li class="skill">JavaScript (ES6+)</li>
+              <li class="skill">TypeScript</li>
+              <li class="skill">React</li>
+              <li class="skill">Tailwind CSS</li>
               <li class="skill">C</li>
             </ul>
           </div>
 
-          <div class="skills-group tools">
+          <div class="skills-group tools" data-tilt>
             <h3 class="skills-group-title">Tools &amp; Platforms</h3>
             <ul class="skills-list">
               <li class="skill">Git / GitHub</li>
-              <li class="skill">Framer (prototype &amp; visual design)</li>
               <li class="skill">Visual Studio Code</li>
-              <li class="skill">Browser dev tools</li>
+              <li class="skill">Cursor</li>
+              <li class="skill">Antigravity</li>
+              <li class="skill">Framer</li>
+              <li class="skill">Browser Dev Tools</li>
             </ul>
           </div>
 
-          <div class="skills-group practices">
+          <div class="skills-group practices" data-tilt>
             <h3 class="skills-group-title">Practices</h3>
             <ul class="skills-list">
-              <li class="skill">Semantic HTML &amp; accessibility (a11y)</li>
-              <li class="skill">Responsive layout and mobile-first design</li>
-              <li class="skill">Cross-browser testing and debugging</li>
+              <li class="skill">Semantic HTML &amp; Accessibility</li>
+              <li class="skill">Responsive &amp; Mobile-first Design</li>
+              <li class="skill">Performance Optimization</li>
+              <li class="skill">Cross-browser Testing</li>
+              <li class="skill">Component Architecture</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects: project cards with title, description, tech list, and placeholder links -->
-    <section id="projects" class="projects reveal" data-moving-bg="true" aria-labelledby="projects-heading">
+    <!-- Projects: dynamically loaded from GitHub with live screenshots -->
+    <section id="projects" class="projects" data-moving-bg="true" aria-labelledby="projects-heading">
       <div class="projects-inner">
-        <h2 id="projects-heading" class="section-title">Selected Projects</h2>
+        <h2 id="projects-heading" class="section-title" data-split-text>Projects</h2>
+        <p class="section-intro" data-animate="fade-up">A selection of my latest work — automatically synced from GitHub with live previews.</p>
 
-        <div class="projects-grid">
-          <article class="project-card" aria-labelledby="project-one-title">
-            <header class="project-card-header">
-              <h3 id="project-one-title" class="project-title">Mini E-commerce / Event Website</h3>
-            </header>
-            <p class="project-description">
-              A compact e-commerce and event landing site built to demonstrate product listings, simple cart interactions, and event booking flows. Focused on clear information architecture and accessible forms.
-            </p>
-            <ul class="project-tech">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <div class="project-links">
-              <a class="project-link" href="https://github.com/TheBoyBilly" aria-label="Source code on GitHub for Mini E-commerce / Event Website">GitHub</a>
-            </div>
-          </article>
-
-          <article class="project-card" aria-labelledby="project-two-title">
-            <header class="project-card-header">
-              <h3 id="project-two-title" class="project-title">Netflix Landing Page Clone</h3>
-            </header>
-            <p class="project-description">
-              A pixel-faithful landing page clone focusing on layout composition, responsive hero and media sections, and typographic rhythm suitable for a streaming-service landing experience.
-            </p>
-            <ul class="project-tech">
-              <li>HTML</li>
-              <li>CSS</li>
-            </ul>
-            <div class="project-links">
-              <a class="project-link" href="https://github.com/TheBoyBilly" aria-label="Source code on GitHub for Netflix Landing Page Clone">GitHub</a>
-            </div>
-          </article>
-
-          <article class="project-card" aria-labelledby="project-three-title">
-            <header class="project-card-header">
-              <h3 id="project-three-title" class="project-title">Fictional Portfolio Built with Framer</h3>
-            </header>
-            <p class="project-description">
-              A polished, interactive portfolio prototype created in Framer to explore motion, layout, and UI polish. Served as a design-to-development handoff reference for layout implementation.
-            </p>
-            <ul class="project-tech">
-              <li>Framer</li>
-              <li>HTML (prototype export)</li>
-            </ul>
-            <div class="project-links">
-              <a class="project-link" href="https://github.com.TheBoyBilly" aria-label="Source code on GitHub for Framer Portfolio">GitHub</a>
-            </div>
-          </article>
+        <div id="projects-loading" class="repo-loading" aria-hidden="true">
+          <div class="spinner" role="status" aria-hidden="true"></div>
+          <span class="loading-text">Loading projects…</span>
         </div>
+
+        <div id="projects-error" class="repo-error" role="status" aria-live="polite"></div>
+
+        <div id="projects-container" class="projects-grid" aria-live="polite"></div>
       </div>
     </section>
 
     <!-- Experience: freelance role with responsibilities and achievements -->
-    <section id="experience" class="experience reveal" aria-labelledby="experience-heading">
+    <section id="experience" class="experience" aria-labelledby="experience-heading">
       <div class="experience-inner">
-        <h2 id="experience-heading" class="section-title">Experience</h2>
+        <h2 id="experience-heading" class="section-title" data-split-text>Experience</h2>
 
-        <article class="experience-item" aria-labelledby="exp-freelance-title">
-          <h3 id="exp-freelance-title" class="experience-role">Freelance Frontend Developer</h3>
+        <article class="experience-item" data-animate="fade-up" aria-labelledby="exp-freelance-title">
+          <h3 id="exp-freelance-title" class="experience-role">Freelance Frontend Engineer</h3>
           <p class="experience-meta">Remote — <time datetime="2023">2023</time> &mdash; Present</p>
           <div class="experience-details">
             <p>
-              Deliver front-end implementations and landing pages for small businesses and individual clients. Work spans component-based UI, responsive layouts, accessible forms, and collaboration with designers to translate mocks into production-ready markup.
+              I build premium web experiences for businesses and founders who want their digital presence to stand out. My work spans full website builds, landing pages, React applications, and design-to-code implementations — all with a focus on performance, accessibility, and visual polish.
             </p>
             <ul class="experience-responsibilities">
-              <li>Converted designs into semantic, accessible HTML templates.</li>
-              <li>Implemented responsive layouts and cross-device testing.</li>
-              <li>Collaborated with designers on interaction and handoff details.</li>
-              <li>Maintained lightweight build and deployment workflows for demos.</li>
+              <li>Delivered 10+ production websites for clients across multiple industries.</li>
+              <li>Built responsive, accessible interfaces with React, TypeScript &amp; Tailwind CSS.</li>
+              <li>Translated Figma/Framer designs into pixel-perfect, production-ready code.</li>
+              <li>Implemented advanced scroll animations and micro-interactions using GSAP.</li>
+              <li>Optimized Core Web Vitals for faster load times and better SEO rankings.</li>
             </ul>
           </div>
         </article>
@@ -285,11 +251,11 @@
     </section>
 
     <!-- Education: current degree and relevant coursework or focus -->
-    <section id="education" class="education reveal" aria-labelledby="education-heading">
+    <section id="education" class="education" aria-labelledby="education-heading">
       <div class="education-inner">
-        <h2 id="education-heading" class="section-title">Education</h2>
+        <h2 id="education-heading" class="section-title" data-split-text>Education</h2>
 
-        <div class="education-item">
+        <div class="education-item" data-animate="fade-up">
           <h3 class="education-degree">Bachelor's Degree in Computer Science (In Progress)</h3>
           <p class="education-institution">Ongoing studies — coursework includes algorithms, data structures, and systems with practical projects in software development.</p>
           <p class="education-notes">Complementary self-study in frontend development, UI design, and web accessibility.</p>
@@ -298,9 +264,9 @@
     </section>
 
     <!-- Resume: professional credentials and download -->
-    <section id="resume" class="resume reveal" aria-labelledby="resume-heading">
+    <section id="resume" class="resume" aria-labelledby="resume-heading">
       <div class="resume-inner">
-        <h2 id="resume-heading" class="section-title">Resume &amp; Professional Background</h2>
+        <h2 id="resume-heading" class="section-title" data-split-text>Resume</h2>
 
         <div class="resume-content">
           <div class="resume-text">
@@ -332,9 +298,9 @@
     </section>
 
     <!-- Contact: conversation-first design with quick links and form -->
-    <section id="contact" class="contact reveal" aria-labelledby="contact-heading">
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
       <div class="contact-inner">
-        <h2 id="contact-heading" class="section-title">Let's Start a Conversation</h2>
+        <h2 id="contact-heading" class="section-title" data-split-text>Let's Start a Conversation</h2>
 
         <div class="contact-content">
           <!-- Left: Quick Connect Section -->
@@ -368,8 +334,11 @@
             </div>
 
             <div class="contact-availability">
-              <p class="availability-label"><strong>Availability:</strong></p>
-              <p class="availability-text">Open to freelance projects and contract work</p>
+              <div class="availability-badge">
+                <span class="availability-pulse"></span>
+                <span class="availability-label">Available for new projects</span>
+              </div>
+              <p class="availability-text">I'm currently open to freelance opportunities and contract roles. Let's build something extraordinary.</p>
             </div>
           </aside>
 
@@ -391,8 +360,9 @@
             </div>
 
             <div class="form-group form-actions">
-              <button type="submit" class="btn btn-submit" aria-label="Submit your message">
-                Send Message
+              <button type="submit" class="btn btn-submit magnetic" aria-label="Submit your message">
+                <span>Send Message</span>
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
               </button>
               <!-- Accessible status region for success / error messages -->
               <div id="form-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
@@ -412,7 +382,13 @@
     </div>
   </footer>
 
+  <!-- GSAP + ScrollTrigger + Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
   <script src="moving-backgrounds.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="gsap-animations.js" defer></script>
 </body>
 </html>

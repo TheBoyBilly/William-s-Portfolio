@@ -572,9 +572,8 @@ a::after {
    ============================================================================ */
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Smooth scrolling for navigation anchors */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   /* Enhanced button hover animations */
@@ -630,5 +629,30 @@ a::after {
   * {
     animation: none !important;
     transition: none !important;
+  }
+
+}
+
+/* ============================================================================
+   REVEAL ANIMATIONS
+   ============================================================================ */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
